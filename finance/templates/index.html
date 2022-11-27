@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for share in shares %}
+                <tr>
+                    <td>{{share['symbol']}}</td>
+                    <td>{{share['name']}}</td>
+                    <td>{{share['shares']}}</td>
+                    <td>${{share['price']}}</td>
+                    <td>${{ "%.2f"|format(share['total'])}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><b>IN CASH</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>${{ "%.2f"|format(in_cash['cash'])}}</b></td>
+            </tr>
+            <tr>
+                <td><b>TOTAL CASH</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>${{ "%.2f"|format(cash_total)}}</b></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
